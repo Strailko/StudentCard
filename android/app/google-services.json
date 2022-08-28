@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "362032323288",
+    "project_id": "flutter-student-card",
+    "storage_bucket": "flutter-student-card.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:362032323288:android:954f02d92b051ee75755ad",
+        "android_client_info": {
+          "package_name": "mk.finki.ukim.studentcard"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "362032323288-h3roqgoqjcvk08pkuk2v6pt72s2qpegf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAK1sNY_30eClyxpvU_sSTnHkWxCI2chns"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "362032323288-h3roqgoqjcvk08pkuk2v6pt72s2qpegf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "362032323288-qf7901gejtmef0l4a8s4hmiliq2ifjde.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "mk.finki.ukim.studentcard"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
