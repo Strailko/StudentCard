@@ -95,7 +95,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 flex: 2,
               ),
               SvgPicture.asset(
-                'assets/ic_instagram.svg',
+                'assets/studentcard.svg',
                 color: primaryColor,
                 height: 64,
               ),
