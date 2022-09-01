@@ -1,4 +1,4 @@
-package mk.finki.ukim.studentcard
+package mk.finki.ukim.student_card
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:362032323288:android:954f02d92b051ee75755ad",
         "android_client_info": {
-          "package_name": "mk.finki.ukim.studentcard"
+          "package_name": "mk.finki.ukim.student_card"
         }
       },
       "oauth_client": [
@@ -34,7 +34,7 @@
               "client_id": "362032323288-qf7901gejtmef0l4a8s4hmiliq2ifjde.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "mk.finki.ukim.studentcard"
+                "bundle_id": "mk.finki.ukim.student_card"
               }
             }
           ]

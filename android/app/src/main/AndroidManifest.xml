@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="mk.finki.ukim.studentcard">
+    package="mk.finki.ukim.student_card">
    <application
         android:label="student_card"
         android:name="${applicationName}"
