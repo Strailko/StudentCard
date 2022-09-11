@@ -3,6 +3,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:student_card/models/user.dart' as model;
 import 'package:student_card/resources/storage_methods.dart';
+import 'package:student_card/utils/global_variable.dart';
+
+import '../screens/profile_screen.dart';
 
 class AuthMethods {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -40,8 +43,8 @@ class AuthMethods {
           password: password,
         );
 
-        String photoUrl =
-            await StorageMethods().uploadImageToStorage('profilePics', file, false);
+        String photoUrl = await StorageMethods()
+            .uploadImageToStorage('profilePics', file, false);
 
         model.User _user = model.User(
           username: username,
@@ -82,6 +85,9 @@ class AuthMethods {
           email: email,
           password: password,
         );
+        homeScreenItems.add(ProfileScreen(
+          uid: FirebaseAuth.instance.currentUser!.uid,
+        ));
         res = "success";
       } else {
         res = "Please enter all the fields";
@@ -93,6 +99,7 @@ class AuthMethods {
   }
 
   Future<void> signOut() async {
+    homeScreenItems.removeLast();
     await _auth.signOut();
   }
 }

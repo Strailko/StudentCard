@@ -5,6 +5,9 @@ import 'package:student_card/utils/colors.dart';
 import 'package:student_card/utils/global_variable.dart';
 import 'package:student_card/widgets/post_card.dart';
 
+import '../resources/auth_methods.dart';
+import 'login_screen.dart';
+
 class FeedScreen extends StatefulWidget {
   const FeedScreen({Key? key}) : super(key: key);
 
@@ -33,15 +36,32 @@ class _FeedScreenState extends State<FeedScreen> {
               actions: [
                 IconButton(
                   icon: const Icon(
-                    Icons.messenger_outline,
+                    Icons.feed,
                     color: primaryColor,
                   ),
                   onPressed: () {},
                 ),
+                IconButton(
+                  icon: const Icon(
+                    Icons.logout,
+                    color: primaryColor,
+                  ),
+                  onPressed: () async {
+                    await AuthMethods().signOut();
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (context) => const LoginScreen(),
+                      ),
+                    );
+                  },
+                ),
               ],
             ),
       body: StreamBuilder(
-        stream: FirebaseFirestore.instance.collection('posts').snapshots(),
+        stream: FirebaseFirestore.instance
+            .collection('posts')
+            .orderBy('datePublished', descending: true)
+            .snapshots(),
         builder: (context,
             AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {

@@ -92,7 +92,7 @@ class _SignupScreenState extends State<SignupScreen> {
             children: [
               Flexible(
                 child: Container(),
-                flex: 2,
+                flex: 1,
               ),
               SvgPicture.asset(
                 'assets/studentcard.svg',
@@ -120,7 +120,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     left: 80,
                     child: IconButton(
                       onPressed: selectImage,
-                      icon: const Icon(Icons.add_a_photo),
+                      icon: const Icon(Icons.add_photo_alternate_rounded),
                     ),
                   )
                 ],
@@ -129,7 +129,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 height: 24,
               ),
               TextFieldInput(
-                hintText: 'Enter your username',
+                hintText: 'Username',
                 textInputType: TextInputType.text,
                 textEditingController: _usernameController,
               ),
@@ -137,7 +137,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 height: 24,
               ),
               TextFieldInput(
-                hintText: 'Enter your email',
+                hintText: 'Email',
                 textInputType: TextInputType.emailAddress,
                 textEditingController: _emailController,
               ),
@@ -145,7 +145,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 height: 24,
               ),
               TextFieldInput(
-                hintText: 'Enter your password',
+                hintText: 'Password',
                 textInputType: TextInputType.text,
                 textEditingController: _passwordController,
                 isPass: true,
@@ -154,7 +154,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 height: 24,
               ),
               TextFieldInput(
-                hintText: 'Enter your bio',
+                hintText: 'Bio',
                 textInputType: TextInputType.text,
                 textEditingController: _bioController,
               ),
@@ -164,40 +164,32 @@ class _SignupScreenState extends State<SignupScreen> {
               InkWell(
                 child: Container(
                   child: !_isLoading
-                      ? const Text(
+                      ? Text(
                           'Sign up',
+                          style: TextStyle(
+                              color: Colors.black, fontWeight: FontWeight.bold),
                         )
                       : const CircularProgressIndicator(
-                          color: primaryColor,
+                          color: mobileBackgroundColor,
                         ),
-                  width: double.infinity,
+                  width: 150,
                   alignment: Alignment.center,
-                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  padding: const EdgeInsets.symmetric(vertical: 8),
                   decoration: const ShapeDecoration(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(4)),
                     ),
-                    color: blueColor,
+                    color: Colors.white,
                   ),
                 ),
                 onTap: signUpUser,
               ),
               const SizedBox(
-                height: 12,
-              ),
-              Flexible(
-                child: Container(),
-                flex: 2,
+                height: 24,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    child: const Text(
-                      'Already have an account?',
-                    ),
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                  ),
                   GestureDetector(
                     onTap: () => Navigator.of(context).push(
                       MaterialPageRoute(
@@ -206,7 +198,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                     child: Container(
                       child: const Text(
-                        ' Login.',
+                        ' Sign in',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
@@ -216,6 +208,37 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                 ],
               ),
+              Flexible(
+                child: Container(),
+                flex: 3,
+              ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              //   children: [
+              //     Container(
+              //       child: const Text(
+              //         'Already have an account?',
+              //       ),
+              //       padding: const EdgeInsets.symmetric(vertical: 8),
+              //     ),
+              //     GestureDetector(
+              //       onTap: () => Navigator.of(context).push(
+              //         MaterialPageRoute(
+              //           builder: (context) => const LoginScreen(),
+              //         ),
+              //       ),
+              //       child: Container(
+              //         child: const Text(
+              //           ' Login.',
+              //           style: TextStyle(
+              //             fontWeight: FontWeight.bold,
+              //           ),
+              //         ),
+              //         padding: const EdgeInsets.symmetric(vertical: 8),
+              //       ),
+              //     ),
+              //   ],
+              // ),
             ],
           ),
         ),

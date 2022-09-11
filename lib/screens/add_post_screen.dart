@@ -25,7 +25,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
       context: parentContext,
       builder: (BuildContext context) {
         return SimpleDialog(
-          title: const Text('Create a Post'),
+          title: const Text('Share photo'),
           children: <Widget>[
             SimpleDialogOption(
                 padding: const EdgeInsets.all(20),
@@ -80,7 +80,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
         });
         showSnackBar(
           context,
-          'Posted!',
+          'Success',
         );
         clearImage();
       } else {
@@ -129,9 +129,6 @@ class _AddPostScreenState extends State<AddPostScreen> {
                 icon: const Icon(Icons.arrow_back),
                 onPressed: clearImage,
               ),
-              title: const Text(
-                'Post to',
-              ),
               centerTitle: false,
               actions: <Widget>[
                 TextButton(
@@ -141,9 +138,9 @@ class _AddPostScreenState extends State<AddPostScreen> {
                     userProvider.getUser.photoUrl,
                   ),
                   child: const Text(
-                    "Post",
+                    "Share",
                     style: TextStyle(
-                        color: Colors.blueAccent,
+                        color: Colors.white,
                         fontWeight: FontWeight.bold,
                         fontSize: 16.0),
                   ),
@@ -161,39 +158,30 @@ class _AddPostScreenState extends State<AddPostScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    CircleAvatar(
-                      backgroundImage: NetworkImage(
-                        userProvider.getUser.photoUrl,
-                      ),
-                    ),
                     SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.3,
+                      width: MediaQuery.of(context).size.width * 0.9,
                       child: TextField(
                         controller: _descriptionController,
                         decoration: const InputDecoration(
-                            hintText: "Write a caption...",
-                            border: InputBorder.none),
+                            hintText: "Description", border: InputBorder.none),
                         maxLines: 8,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 45.0,
-                      width: 45.0,
-                      child: AspectRatio(
-                        aspectRatio: 487 / 451,
-                        child: Container(
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                            fit: BoxFit.fill,
-                            alignment: FractionalOffset.topCenter,
-                            image: MemoryImage(_file!),
-                          )),
-                        ),
                       ),
                     ),
                   ],
                 ),
                 const Divider(),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.35,
+                  width: double.infinity,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                      fit: BoxFit.contain,
+                      alignment: FractionalOffset.topCenter,
+                      image: MemoryImage(_file!),
+                    )),
+                  ),
+                ),
               ],
             ),
           );

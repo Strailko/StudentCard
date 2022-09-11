@@ -17,12 +17,11 @@ void main() async {
   if (kIsWeb) {
     await Firebase.initializeApp(
       options: const FirebaseOptions(
-        apiKey: "AIzaSyCori297D1Ao--3VVb4Rr8N1xaCX7w-i1U",
-        appId: "1:362032323288:web:94a3f05ce25d04035755ad",
-        messagingSenderId: "362032323288",
-        projectId: "flutter-student-card",
-        storageBucket: 'flutter-student-card.appspot.com'
-      ),
+          apiKey: "AIzaSyCori297D1Ao--3VVb4Rr8N1xaCX7w-i1U",
+          appId: "1:362032323288:web:94a3f05ce25d04035755ad",
+          messagingSenderId: "362032323288",
+          projectId: "flutter-student-card",
+          storageBucket: 'flutter-student-card.appspot.com'),
     );
   } else {
     await Firebase.initializeApp();
@@ -37,11 +36,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => UserProvider(),),
+        ChangeNotifierProvider(
+          create: (_) => UserProvider(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Instagram Clone',
+        title: 'Student Card',
         theme: ThemeData.dark().copyWith(
           scaffoldBackgroundColor: mobileBackgroundColor,
         ),
