@@ -27,7 +27,7 @@ class _FeedScreenState extends State<FeedScreen> {
           ? null
           : AppBar(
               backgroundColor: mobileBackgroundColor,
-              centerTitle: false,
+              centerTitle: true,
               title: SvgPicture.asset(
                 'assets/studentcard.svg',
                 color: primaryColor,
