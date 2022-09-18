@@ -98,15 +98,13 @@ class FireStoreMethods {
     return res;
   }
 
-  Future<void> followUser(
-    String uid,
-    String followId
-  ) async {
+  Future<void> followUser(String uid, String followId) async {
     try {
-      DocumentSnapshot snap = await _firestore.collection('users').doc(uid).get();
+      DocumentSnapshot snap =
+          await _firestore.collection('users').doc(uid).get();
       List following = (snap.data()! as dynamic)['following'];
 
-      if(following.contains(followId)) {
+      if (following.contains(followId)) {
         await _firestore.collection('users').doc(followId).update({
           'followers': FieldValue.arrayRemove([uid])
         });
@@ -123,9 +121,34 @@ class FireStoreMethods {
           'following': FieldValue.arrayUnion([followId])
         });
       }
-
-    } catch(e) {
+    } catch (e) {
       print(e.toString());
     }
+  }
+
+  Future<String> editUser(
+      String uid, String faculty, String bio, Uint8List? file) async {
+    String res = "Some error Occurred";
+    try {
+      if (file != null) {
+        String photoUrl = await StorageMethods()
+            .uploadImageToStorage('profilePics', file, false);
+        await _firestore.collection('users').doc(uid).update({
+          'photoUrl': photoUrl,
+          'faculty': faculty,
+          'bio': bio,
+        });
+      } else {
+        await _firestore.collection('users').doc(uid).update({
+          'faculty': faculty,
+          'bio': bio,
+        });
+      }
+      res = "success";
+    } catch (e) {
+      print(e.toString());
+      res = "error";
+    }
+    return res;
   }
 }

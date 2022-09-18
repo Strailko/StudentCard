@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:student_card/resources/auth_methods.dart';
 import 'package:student_card/resources/firestore_methods.dart';
 import 'package:student_card/responsive/mobile_screen_layout.dart';
+import 'package:student_card/screens/edit_profile_screen.dart';
 import 'package:student_card/screens/login_screen.dart';
 import 'package:student_card/utils/colors.dart';
 import 'package:student_card/utils/utils.dart';
@@ -112,7 +113,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   alignment: Alignment.centerLeft,
                                   padding: const EdgeInsets.only(left: 10),
                                   child: Text(
-                                    userData['username'],
+                                    userData['username'] +
+                                        " (" +
+                                        userData['faculty'] +
+                                        ")",
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -141,7 +145,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                   .pushReplacement(
                                                 MaterialPageRoute(
                                                   builder: (context) =>
-                                                      const LoginScreen(),
+                                                      const EditProfileScreen()
                                                 ),
                                               );
                                             },
