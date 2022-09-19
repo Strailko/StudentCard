@@ -5,18 +5,20 @@ import 'package:student_card/screens/announcement_screen.dart';
 import 'package:student_card/utils/colors.dart';
 import 'package:student_card/utils/global_variable.dart';
 import 'package:student_card/widgets/post_card.dart';
+import 'package:student_card/widgets/promotion_card.dart';
 
 import '../resources/auth_methods.dart';
 import 'login_screen.dart';
+import 'announcement_screen.dart';
 
-class FeedScreen extends StatefulWidget {
-  const FeedScreen({Key? key}) : super(key: key);
+class PromotionScreen extends StatefulWidget {
+  const PromotionScreen({Key? key}) : super(key: key);
 
   @override
-  State<FeedScreen> createState() => _FeedScreenState();
+  State<PromotionScreen> createState() => _PromotionScreen();
 }
 
-class _FeedScreenState extends State<FeedScreen> {
+class _PromotionScreen extends State<PromotionScreen> {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -67,7 +69,7 @@ class _FeedScreenState extends State<FeedScreen> {
             ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance
-            .collection('posts')
+            .collection('promotions')
             .orderBy('datePublished', descending: true)
             .snapshots(),
         builder: (context,
@@ -84,7 +86,7 @@ class _FeedScreenState extends State<FeedScreen> {
                 horizontal: width > webScreenSize ? width * 0.3 : 0,
                 vertical: width > webScreenSize ? 15 : 0,
               ),
-              child: PostCard(
+              child: PromotionCard(
                 snap: snapshot.data!.docs[index].data(),
               ),
             ),
