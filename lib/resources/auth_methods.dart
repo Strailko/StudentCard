@@ -27,6 +27,7 @@ class AuthMethods {
     required String email,
     required String password,
     required String username,
+    required String faculty,
     required String bio,
     required Uint8List file,
   }) async {
@@ -35,6 +36,7 @@ class AuthMethods {
       if (email.isNotEmpty ||
           password.isNotEmpty ||
           username.isNotEmpty ||
+          faculty.isNotEmpty ||
           bio.isNotEmpty ||
           file != null) {
         // registering user in auth with email and password
@@ -51,6 +53,7 @@ class AuthMethods {
           uid: cred.user!.uid,
           photoUrl: photoUrl,
           email: email,
+          faculty: faculty,
           bio: bio,
           followers: [],
           following: [],

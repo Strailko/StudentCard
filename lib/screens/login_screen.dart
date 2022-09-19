@@ -9,6 +9,7 @@ import 'package:student_card/utils/colors.dart';
 import 'package:student_card/utils/global_variable.dart';
 import 'package:student_card/utils/utils.dart';
 import 'package:student_card/widgets/text_field_input.dart';
+import 'package:location/location.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -27,6 +28,30 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
     _emailController.dispose();
     _passwordController.dispose();
+    getLocationData();
+  }
+
+  void getLocationData() async {
+    Location location = Location();
+
+    bool _serviceEnabled;
+    PermissionStatus _permissionGranted;
+    LocationData _locationData;
+
+    _serviceEnabled = await location.serviceEnabled();
+    if (!_serviceEnabled) {
+      _serviceEnabled = await location.requestService();
+    }
+
+    _permissionGranted = await location.hasPermission();
+    if (_permissionGranted == PermissionStatus.denied) {
+      _permissionGranted = await location.requestPermission();
+    }
+
+    _locationData = await location.getLocation();
+
+    print(_locationData.longitude);
+    print(_locationData.latitude);
   }
 
   void loginUser() async {
@@ -148,7 +173,12 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               Flexible(
                 child: Container(),
-                flex: 3,
+                flex: 1,
+              ),
+              Image(image: AssetImage("discount.jpg")),
+              Flexible(
+                child: Container(),
+                flex: 1,
               ),
             ],
           ),
