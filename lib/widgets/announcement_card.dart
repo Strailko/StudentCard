@@ -1,17 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:student_card/models/user.dart' as model;
 import 'package:student_card/providers/user_provider.dart';
-import 'package:student_card/resources/firestore_methods.dart';
-import 'package:student_card/screens/comments_screen.dart';
 import 'package:student_card/utils/colors.dart';
-import 'package:student_card/utils/global_variable.dart';
-import 'package:student_card/utils/utils.dart';
-import 'package:student_card/widgets/like_animation.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-
-import '../screens/profile_screen.dart';
 
 class AnnouncementCard extends StatefulWidget {
   final snap;
@@ -54,7 +46,6 @@ class _AnnouncementCardState extends State<AnnouncementCard> {
                 left: 0,
               ),
               child: Flexible(
-                // padding: const EdgeInsets.only(top: 4, left: 10),
                 child: RichText(
                   text: TextSpan(
                     style: const TextStyle(color: primaryColor),

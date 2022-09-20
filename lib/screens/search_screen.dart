@@ -1,9 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:student_card/screens/profile_screen.dart';
 import 'package:student_card/utils/colors.dart';
-import 'package:student_card/utils/global_variable.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({Key? key}) : super(key: key);
@@ -77,32 +75,6 @@ class _SearchScreenState extends State<SearchScreen> {
               },
             )
           : Container(),
-      // : FutureBuilder(
-      //     future: FirebaseFirestore.instance
-      //         .collection('posts')
-      //         .orderBy('datePublished')
-      //         .get(),
-      //     builder: (context, snapshot) {
-      //       if (!snapshot.hasData) {
-      //         return const Center(
-      //           child: CircularProgressIndicator(),
-      //         );
-      //       }
-
-      //       return StaggeredGridView.countBuilder(
-      //         crossAxisCount: 2,
-      //         itemCount: (snapshot.data! as dynamic).docs.length,
-      //         itemBuilder: (context, index) => Image.network(
-      //           (snapshot.data! as dynamic).docs[index]['postUrl'],
-      //           fit: BoxFit.cover,
-      //         ),
-      //         staggeredTileBuilder: (index) => StaggeredTile.count(
-      //             (index % 7 == 0) ? 1 : 1, (index % 7 == 0) ? 1 : 1),
-      //         mainAxisSpacing: 2.0,
-      //         crossAxisSpacing: 2.0,
-      //       );
-      //     },
-      //   ),
     );
   }
 }

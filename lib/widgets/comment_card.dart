@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class CommentCard extends StatelessWidget {
   final snap;
@@ -11,12 +10,6 @@ class CommentCard extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
       child: Row(
         children: [
-          // CircleAvatar(
-          //   backgroundImage: NetworkImage(
-          //     snap.data()['profilePic'],
-          //   ),
-          //   radius: 18,
-          // ),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.only(left: 16),
@@ -43,13 +36,6 @@ class CommentCard extends StatelessWidget {
               ),
             ),
           ),
-          // Container(
-          //   padding: const EdgeInsets.all(8),
-          //   child: const Icon(
-          //     Icons.favorite,
-          //     size: 16,
-          //   ),
-          // )
         ],
       ),
     );
