@@ -2,17 +2,12 @@ import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:student_card/resources/auth_methods.dart';
 import 'package:student_card/resources/firestore_methods.dart';
 import 'package:student_card/responsive/mobile_screen_layout.dart';
 import 'package:student_card/responsive/responsive_layout.dart';
 import 'package:student_card/responsive/web_screen_layout.dart';
-import 'package:student_card/screens/login_screen.dart';
-import 'package:student_card/screens/profile_screen.dart';
 import 'package:student_card/utils/colors.dart';
-import 'package:student_card/utils/global_variable.dart';
 import 'package:student_card/utils/utils.dart';
 import 'package:student_card/widgets/text_field_input.dart';
 
@@ -89,7 +84,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       setState(() {
         _isLoading = false;
       });
-      // show the error
+
       showSnackBar(context, res);
     }
   }

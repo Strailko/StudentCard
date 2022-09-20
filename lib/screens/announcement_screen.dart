@@ -4,10 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:student_card/utils/colors.dart';
 import 'package:student_card/utils/global_variable.dart';
 import 'package:student_card/widgets/announcement_card.dart';
-import 'package:student_card/widgets/post_card.dart';
-
-import '../resources/auth_methods.dart';
-import 'login_screen.dart';
 
 class AnnouncementScreen extends StatefulWidget {
   const AnnouncementScreen({Key? key}) : super(key: key);
@@ -36,39 +32,13 @@ class _AnnouncementScreen extends State<AnnouncementScreen> {
               ),
               leading: GestureDetector(
                 onTap: () {
-                  /* Write listener code here */
                   Navigator.pop(context);
                 },
                 child: Icon(
-                  Icons.arrow_back, // add custom icons also
+                  Icons.arrow_back,
                   color: primaryColor,
                 ),
               ),
-              // actions: [
-              //   // IconButton(
-              //   //   icon: const Icon(
-              //   //     Icons.arrow_back,
-              //   //     color: primaryColor,
-              //   //   ),
-              //   //   onPressed: () {
-              //   //     Navigator.pop(context);
-              //   //   },
-              //   // ),
-              //   IconButton(
-              //     icon: const Icon(
-              //       Icons.logout,
-              //       color: primaryColor,
-              //     ),
-              //     onPressed: () async {
-              //       await AuthMethods().signOut();
-              //       Navigator.of(context).pushReplacement(
-              //         MaterialPageRoute(
-              //           builder: (context) => const LoginScreen(),
-              //         ),
-              //       );
-              //     },
-              //   ),
-              // ],
             ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance

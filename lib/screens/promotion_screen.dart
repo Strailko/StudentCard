@@ -4,12 +4,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:student_card/screens/announcement_screen.dart';
 import 'package:student_card/utils/colors.dart';
 import 'package:student_card/utils/global_variable.dart';
-import 'package:student_card/widgets/post_card.dart';
 import 'package:student_card/widgets/promotion_card.dart';
 
 import '../resources/auth_methods.dart';
 import 'login_screen.dart';
-import 'announcement_screen.dart';
 
 class PromotionScreen extends StatefulWidget {
   const PromotionScreen({Key? key}) : super(key: key);

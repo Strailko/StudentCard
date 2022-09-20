@@ -64,9 +64,8 @@ class _AddPostScreenState extends State<AddPostScreen> {
     setState(() {
       isLoading = true;
     });
-    // start the loading
+
     try {
-      // upload to storage and db
       String res = await FireStoreMethods().uploadPost(
         _descriptionController.text,
         _file!,

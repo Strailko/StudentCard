@@ -3,12 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:student_card/resources/auth_methods.dart';
-import 'package:student_card/responsive/mobile_screen_layout.dart';
-import 'package:student_card/responsive/responsive_layout.dart';
-import 'package:student_card/responsive/web_screen_layout.dart';
 import 'package:student_card/screens/login_screen.dart';
 import 'package:student_card/utils/colors.dart';
-import 'package:student_card/utils/global_variable.dart';
 import 'package:student_card/utils/utils.dart';
 import 'package:student_card/widgets/text_field_input.dart';
 
@@ -38,12 +34,10 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   void signUpUser() async {
-    // set loading to true
     setState(() {
       _isLoading = true;
     });
 
-    // signup user using our authmethodds
     String res = await AuthMethods().signUpUser(
         email: _emailController.text,
         password: _passwordController.text,
@@ -51,12 +45,12 @@ class _SignupScreenState extends State<SignupScreen> {
         faculty: _facultyController.text,
         bio: _bioController.text,
         file: _image!);
-    // if string returned is sucess, user has been created
+
     if (res == "success") {
       setState(() {
         _isLoading = false;
       });
-      // navigate to the home screen
+
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (context) => const LoginScreen(),
@@ -66,14 +60,14 @@ class _SignupScreenState extends State<SignupScreen> {
       setState(() {
         _isLoading = false;
       });
-      // show the error
+
       showSnackBar(context, res);
     }
   }
 
   selectImage() async {
     Uint8List im = await pickImage(ImageSource.gallery);
-    // set state because we need to display the image we selected on the circle avatar
+
     setState(() {
       _image = im;
     });
@@ -219,33 +213,6 @@ class _SignupScreenState extends State<SignupScreen> {
                 child: Container(),
                 flex: 3,
               ),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              //   children: [
-              //     Container(
-              //       child: const Text(
-              //         'Already have an account?',
-              //       ),
-              //       padding: const EdgeInsets.symmetric(vertical: 8),
-              //     ),
-              //     GestureDetector(
-              //       onTap: () => Navigator.of(context).push(
-              //         MaterialPageRoute(
-              //           builder: (context) => const LoginScreen(),
-              //         ),
-              //       ),
-              //       child: Container(
-              //         child: const Text(
-              //           ' Login.',
-              //           style: TextStyle(
-              //             fontWeight: FontWeight.bold,
-              //           ),
-              //         ),
-              //         padding: const EdgeInsets.symmetric(vertical: 8),
-              //       ),
-              //     ),
-              //   ],
-              // ),
             ],
           ),
         ),

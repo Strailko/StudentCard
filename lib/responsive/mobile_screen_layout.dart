@@ -12,7 +12,7 @@ class MobileScreenLayout extends StatefulWidget {
 
 class _MobileScreenLayoutState extends State<MobileScreenLayout> {
   int _page = 0;
-  late PageController pageController; // for tabs animation
+  late PageController pageController;
 
   @override
   void initState() {
@@ -33,7 +33,6 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
   }
 
   void navigationTapped(int page) {
-    //Animating Page
     if (page == 0) {
       page = 2;
     } else if (page == 2) {

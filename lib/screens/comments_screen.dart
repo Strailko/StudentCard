@@ -78,7 +78,6 @@ class _CommentsScreenState extends State<CommentsScreen> {
           );
         },
       ),
-      // text input
       bottomNavigationBar: SafeArea(
         child: Container(
           height: kToolbarHeight,
@@ -87,10 +86,6 @@ class _CommentsScreenState extends State<CommentsScreen> {
           padding: const EdgeInsets.only(left: 16, right: 8),
           child: Row(
             children: [
-              // CircleAvatar(
-              //   backgroundImage: NetworkImage(user.photoUrl),
-              //   radius: 18,
-              // ),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.only(left: 16, right: 8),
