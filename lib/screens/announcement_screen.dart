@@ -44,35 +44,35 @@ class _AnnouncementScreen extends State<AnnouncementScreen> {
                   color: primaryColor,
                 ),
               ),
-              actions: [
-                // IconButton(
-                //   icon: const Icon(
-                //     Icons.arrow_back,
-                //     color: primaryColor,
-                //   ),
-                //   onPressed: () {
-                //     Navigator.pop(context);
-                //   },
-                // ),
-                IconButton(
-                  icon: const Icon(
-                    Icons.logout,
-                    color: primaryColor,
-                  ),
-                  onPressed: () async {
-                    await AuthMethods().signOut();
-                    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(
-                        builder: (context) => const LoginScreen(),
-                      ),
-                    );
-                  },
-                ),
-              ],
+              // actions: [
+              //   // IconButton(
+              //   //   icon: const Icon(
+              //   //     Icons.arrow_back,
+              //   //     color: primaryColor,
+              //   //   ),
+              //   //   onPressed: () {
+              //   //     Navigator.pop(context);
+              //   //   },
+              //   // ),
+              //   IconButton(
+              //     icon: const Icon(
+              //       Icons.logout,
+              //       color: primaryColor,
+              //     ),
+              //     onPressed: () async {
+              //       await AuthMethods().signOut();
+              //       Navigator.of(context).pushReplacement(
+              //         MaterialPageRoute(
+              //           builder: (context) => const LoginScreen(),
+              //         ),
+              //       );
+              //     },
+              //   ),
+              // ],
             ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance
-            .collection('annoncements')
+            .collection('announcements')
             .orderBy('datePublished', descending: true)
             .snapshots(),
         builder: (context,

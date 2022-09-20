@@ -76,32 +76,33 @@ class _SearchScreenState extends State<SearchScreen> {
                 );
               },
             )
-          : FutureBuilder(
-              future: FirebaseFirestore.instance
-                  .collection('posts')
-                  .orderBy('datePublished')
-                  .get(),
-              builder: (context, snapshot) {
-                if (!snapshot.hasData) {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
+          : Container(),
+      // : FutureBuilder(
+      //     future: FirebaseFirestore.instance
+      //         .collection('posts')
+      //         .orderBy('datePublished')
+      //         .get(),
+      //     builder: (context, snapshot) {
+      //       if (!snapshot.hasData) {
+      //         return const Center(
+      //           child: CircularProgressIndicator(),
+      //         );
+      //       }
 
-                return StaggeredGridView.countBuilder(
-                  crossAxisCount: 2,
-                  itemCount: (snapshot.data! as dynamic).docs.length,
-                  itemBuilder: (context, index) => Image.network(
-                    (snapshot.data! as dynamic).docs[index]['postUrl'],
-                    fit: BoxFit.cover,
-                  ),
-                  staggeredTileBuilder: (index) => StaggeredTile.count(
-                      (index % 7 == 0) ? 1 : 1, (index % 7 == 0) ? 1 : 1),
-                  mainAxisSpacing: 2.0,
-                  crossAxisSpacing: 2.0,
-                );
-              },
-            ),
+      //       return StaggeredGridView.countBuilder(
+      //         crossAxisCount: 2,
+      //         itemCount: (snapshot.data! as dynamic).docs.length,
+      //         itemBuilder: (context, index) => Image.network(
+      //           (snapshot.data! as dynamic).docs[index]['postUrl'],
+      //           fit: BoxFit.cover,
+      //         ),
+      //         staggeredTileBuilder: (index) => StaggeredTile.count(
+      //             (index % 7 == 0) ? 1 : 1, (index % 7 == 0) ? 1 : 1),
+      //         mainAxisSpacing: 2.0,
+      //         crossAxisSpacing: 2.0,
+      //       );
+      //     },
+      //   ),
     );
   }
 }
