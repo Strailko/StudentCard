@@ -42,8 +42,9 @@ class _PromotionCardState extends State<PromotionCard> {
       // boundary needed for web
       decoration: BoxDecoration(
         border: Border.all(
-          color: width > webScreenSize ? secondaryColor : mobileBackgroundColor,
-        ),
+            color:
+                width > webScreenSize ? secondaryColor : mobileBackgroundColor,
+            width: 20),
         color: mobileBackgroundColor,
       ),
       padding: const EdgeInsets.symmetric(
@@ -55,31 +56,14 @@ class _PromotionCardState extends State<PromotionCard> {
           Container(
             padding: const EdgeInsets.symmetric(
               vertical: 4,
-              horizontal: 16,
+              horizontal: 4,
             ).copyWith(right: 0),
             child: Row(
               children: <Widget>[
-                InkWell(
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => ProfileScreen(
-                          uid: widget.snap['uid'].toString(),
-                        ),
-                      ),
-                    );
-                  },
-                  child: CircleAvatar(
-                    radius: 16,
-                    backgroundImage: NetworkImage(
-                      widget.snap['imageUrl'].toString(),
-                    ),
-                  ),
-                ),
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.only(
-                      left: 8,
+                      left: 0,
                     ),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
@@ -87,145 +71,81 @@ class _PromotionCardState extends State<PromotionCard> {
                       children: <Widget>[
                         InkWell(
                           onTap: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => ProfileScreen(
-                                  uid: widget.snap['uid'].toString(),
-                                ),
-                              ),
-                            );
+                            // Navigator.of(context).push(
+                            //   MaterialPageRoute(
+                            //     builder: (context) => ProfileScreen(
+                            //       uid: widget.snap['uid'].toString(),
+                            //     ),
+                            //   ),
+                            // );
                           },
                           child: Text(
-                            widget.snap['name'].toString(),
+                            widget.snap['name'].toString().toUpperCase(),
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
+                              fontSize: 14,
                             ),
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ),
                 ),
-                // Container(
-                //   child: Text(
-                //     DateFormat.yMMMd()
-                //         .format(widget.snap['datePublished'].toDate()),
-                //     style: const TextStyle(
-                //       color: secondaryColor,
-                //     ),
-                //   ),
-                //   padding: const EdgeInsets.only(right: 8),
-                // ),
-                // widget.snap['uid'].toString() == user.uid
-                //     ? IconButton(
-                //         onPressed: () {
-                //           showDialog(
-                //             useRootNavigator: false,
-                //             context: context,
-                //             builder: (context) {
-                //               return Dialog(
-                //                 child: ListView(
-                //                     padding: const EdgeInsets.symmetric(
-                //                         vertical: 16),
-                //                     shrinkWrap: true,
-                //                     children: [
-                //                       'Delete',
-                //                     ]
-                //                         .map(
-                //                           (e) => InkWell(
-                //                               child: Container(
-                //                                 padding:
-                //                                     const EdgeInsets.symmetric(
-                //                                         vertical: 12,
-                //                                         horizontal: 16),
-                //                                 child: Text(e),
-                //                               ),
-                //                               onTap: () {
-                //                                 deletePost(
-                //                                   widget.snap['postId']
-                //                                       .toString(),
-                //                                 );
-                //                                 // remove the dialog box
-                //                                 Navigator.of(context).pop();
-                //                               }),
-                //                         )
-                //                         .toList()),
-                //               );
-                //             },
-                //           );
-                //         },
-                //         icon: const Icon(Icons.settings),
-                //       )
-                //     : Container(),
+                Container(
+                  child: Text(
+                    widget.snap['discount'].toString(),
+                    style: const TextStyle(
+                        color: primaryColor, fontWeight: FontWeight.bold),
+                  ),
+                  padding: const EdgeInsets.only(right: 8),
+                ),
               ],
             ),
           ),
           // IMAGE SECTION OF THE POST
-          // GestureDetector(
-          //   onDoubleTap: () {
-          //     FireStoreMethods().likePost(
-          //       widget.snap['postId'].toString(),
-          //       user.uid,
-          //       widget.snap['likes'],
-          //     );
-          //     setState(() {
-          //       isLikeAnimating = true;
-          //     });
-          //   },
-          //   child: Stack(
-          //     alignment: Alignment.center,
-          //     children: [
-          //       SizedBox(
-          //         height: MediaQuery.of(context).size.height * 0.35,
-          //         width: double.infinity,
-          //         child: Image.network(
-          //           widget.snap['postUrl'].toString(),
-          //           fit: BoxFit.contain,
-          //         ),
-          //       ),
-          //       AnimatedOpacity(
-          //         duration: const Duration(milliseconds: 200),
-          //         opacity: isLikeAnimating ? 1 : 0,
-          //         child: LikeAnimation(
-          //           isAnimating: isLikeAnimating,
-          //           child: const Icon(
-          //             Icons.thumb_up,
-          //             color: Colors.white,
-          //             size: 100,
-          //           ),
-          //           duration: const Duration(
-          //             milliseconds: 400,
-          //           ),
-          //           onEnd: () {
-          //             setState(() {
-          //               isLikeAnimating = false;
-          //             });
-          //           },
-          //         ),
-          //       ),
-          //     ],
-          //   ),
-          // ),
+          GestureDetector(
+            onDoubleTap: () {
+              // FireStoreMethods().likePost(
+              //   widget.snap['postId'].toString(),
+              //   user.uid,
+              //   widget.snap['likes'],
+              // );
+              // setState(() {
+              //   isLikeAnimating = true;
+              // });
+            },
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.15,
+                  width: double.infinity,
+                  child: Image.network(
+                    widget.snap['imageUrl'].toString(),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ],
+            ),
+          ),
           // LIKE, COMMENT SECTION OF THE POST
           Row(
             children: <Widget>[
-              Container(
-                padding: const EdgeInsets.only(top: 4, left: 10),
+              Flexible(
+                // padding: const EdgeInsets.only(top: 4, left: 10),
                 child: RichText(
                   text: TextSpan(
                     style: const TextStyle(color: primaryColor),
                     children: [
                       TextSpan(
-                        text: ' ${widget.snap['title']}',
+                        text: ' ${widget.snap['description']}',
                       ),
                     ],
                   ),
+                  softWrap: true,
                 ),
               ),
-              Expanded(
-                  child: Align(
-                alignment: Alignment.bottomRight,
-              )),
+
               // LikeAnimation(
               //   isAnimating: widget.snap['likes'].contains(user.uid),
               //   smallLike: true,
